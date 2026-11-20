@@ -57,3 +57,8 @@ TalentHub Salesforce Developer Project
 
 ## GitHub Repository
 https://github.com/jyothimaviks-beep/TalentHub-Project
+## Application Screenshots
+
+### Candidates Management
+
+![TalentHub Candidates](screenshots/talenthub-candidates.png)
