@@ -1,0 +1,63 @@
+<template>
+    <lightning-card
+        title="Candidate Eligibility Checker"
+        icon-name="standard:record">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-record-picker
+                label="Select Candidate"
+                placeholder="Search Candidate by name..."
+                object-api-name="Candidate__c"
+                display-info={candidateDisplayInfo}
+                matching-info={candidateMatchingInfo}
+                value={candidateId}
+                onchange={handleCandidateChange}>
+            </lightning-record-picker>
+
+            <lightning-record-picker
+                label="Select Job"
+                placeholder="Search Job by name..."
+                object-api-name="Job__c"
+                display-info={jobDisplayInfo}
+                matching-info={jobMatchingInfo}
+                value={jobId}
+                onchange={handleJobChange}
+                class="slds-m-top_medium">
+            </lightning-record-picker>
+
+            <lightning-button
+                label="Check Eligibility"
+                variant="brand"
+                onclick={checkEligibility}
+                disabled={isCheckDisabled}
+                class="slds-m-top_medium">
+            </lightning-button>
+
+            <template if:true={isEligible}>
+                <div class="slds-text-color_success slds-m-top_medium">
+                    Candidate is Eligible!
+                </div>
+            </template>
+
+            <template if:true={isNotEligible}>
+                <div class="slds-text-color_error slds-m-top_medium">
+                    Candidate is Not Eligible.
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-text-color_error slds-m-top_medium">
+                    {errorMessage}
+                </div>
+            </template>
+
+            <template if:true={isLoading}>
+                <lightning-spinner
+                    alternative-text="Checking eligibility">
+                </lightning-spinner>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
